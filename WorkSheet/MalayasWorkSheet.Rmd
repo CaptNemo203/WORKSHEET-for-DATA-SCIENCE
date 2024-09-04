@@ -239,7 +239,7 @@ print(a,na.print="-999")
   
   
   
-#15 A special type of function calls can appear on the left hand side of the assignment operator as in > class(x) <- "foo".  
+#15 A special type of function calls can appear on the left hand side of the assignment operator as in > class(x) <- "foo". 
   
 ```{r}
 name = readline(prompt="Input your name: ")
