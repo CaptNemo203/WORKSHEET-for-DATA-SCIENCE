@@ -171,7 +171,6 @@ b. What are the results?
 
 c. Write the R scripts and its outputs.
 ```{r}
-rivers
 
 data <- c(length(rivers), sum(rivers), mean(rivers), median(rivers), var(rivers), sd(rivers), min(rivers), max(rivers))
 
@@ -232,11 +231,11 @@ Write the R script and its output.
 ```{r}
 ranked_subset <- celebrity_data[10:20, ]
 save(ranked_subset, file = "Ranks.RData")
+ranked_subset
 ```
 
 e. Describe its output.
-
-
+It shows the data from 10 to 20
 
 
 
