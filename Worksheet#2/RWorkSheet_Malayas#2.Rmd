@@ -291,19 +291,42 @@ print(last_six_rows)
 
 #10. Create a list of ten (10) vegetables you ate during your lifetime. If none, just list down.
 a. Write the R scripts and its output.
+```{r}
+vegetables <- c("Carrot", "Broccoli", "Spinach", "Tomato", "Cucumber", "Lettuce", "Pepper", "Zucchini", "Cauliflower", "Onion")
+vegetables
+```
 
-5
 
 b. Add 2 additional vegetables after the last vegetables
 in the list. What is the R script and its output?
+```{r}
+vegetables <- c("Carrot", "Broccoli", "Spinach", "Tomato", "Cucumber", "Lettuce", "Pepper", "Zucchini", "Cauliflower", "Onion")
+vegetables <- c(vegetables, "Eggplant", "Mushroom")
+
+```
 
 c. Add 4 additional vegetables after index 5. How many
 datapoints does your vegetable list have? What is the
 R script and its output?
+```{r}
+vegetables <- c("Carrot", "Broccoli", "Spinach", "Tomato", "Cucumber", "Lettuce", "Pepper", "Zucchini", "Cauliflower", "Onion")
+vegetables <- c(vegetables, "Eggplant", "Mushroom")
+vegetables <- append(vegetables, c("Pumpkin", "Radish", "Kale", "Beetroot"), after = 5)
+vegetables
+length(vegetables)
+```
 
 d. Remove the vegetables in index 5, 10, and 15. How
 many vegetables were left? Write the codes and its
 output.
+
+```{r}
+vegetables <- c("Carrot", "Broccoli", "Spinach", "Tomato", "Cucumber", "Lettuce", "Pepper", "Zucchini", "Cauliflower", "Onion")
+vegetables <- c(vegetables, "Eggplant", "Mushroom")
+vegetables <- append(vegetables, c("Pumpkin", "Radish", "Kale", "Beetroot"), after = 5)
+vegetables <- vegetables[-c(5, 10, 15)]
+length(vegetables)
+```
 
 
 Prepared by:
