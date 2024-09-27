@@ -36,6 +36,7 @@ x
 #2.* Create a vector using seq() function
 a. seq(1, 3, by=0.2) # specify step size
 Write the R script and its output. Describe the output.
+it displays the numver by 0.2
 ```{r}
 seq(1, 3, by=0.2)
 ```
@@ -165,8 +166,17 @@ rivers
 ```
 
 b. What are the results?
-[1]    141.0000  83357.0000    591.1844    425.0000 243908.4086    493.8708    135.0000
-[8]   3710.0000
+[1]  735  320  325  392  524  450 1459  135  465  600  330  336  280  315
+ [15]  870  906  202  329  290 1000  600  505 1450  840 1243  890  350  407
+ [29]  286  280  525  720  390  250  327  230  265  850  210  630  260  230
+ [43]  360  730  600  306  390  420  291  710  340  217  281  352  259  250
+ [57]  470  680  570  350  300  560  900  625  332 2348 1171 3710 2315 2533
+ [71]  780  280  410  460  260  255  431  350  760  618  338  981 1306  500
+ [85]  696  605  250  411 1054  735  233  435  490  310  460  383  375 1270
+ [99]  545  445 1885  380  300  380  377  425  276  210  800  420  350  360
+[113]  538 1100 1205  314  237  610  360  540 1038  424  310  300  444  301
+[127]  268  620  215  652  900  525  246  360  529  500  720  270  430  671
+[141] 1770
 
 
 c. Write the R scripts and its outputs.
@@ -221,15 +231,15 @@ the RStudio. What is the R script?
 ```{r}
 write.csv(celebritydata, file = "PowerRanking.csv", row.names = FALSE)
 
-celebrity_data_imported <- read.csv("PowerRanking.csv")
+celebritydata_imported <- read.csv("PowerRanking.csv")
 
-celebrity_data_imported
+celebritydata_imported
 ```
 
 d. Access the rows 10 to 20 and save it as Ranks.RData.
 Write the R script and its output.
 ```{r}
-ranked_subset <- celebrity_data[10:20, ]
+ranked_subset <- celebritydata[10:20, ]
 save(ranked_subset, file = "Ranks.RData")
 ranked_subset
 ```
