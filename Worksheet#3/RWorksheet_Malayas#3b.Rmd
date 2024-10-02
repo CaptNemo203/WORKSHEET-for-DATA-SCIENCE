@@ -75,6 +75,12 @@ males_farmers
 
 h. Select only all females respondent that have greater than or equal to 5 number of siblings attending school. Write the codes and its outputs.
 
+```{r}
+female_siblings <- data[data$Sex == 2 & data$Siblings_at_School >= 5,]
+
+female_siblings
+
+```
 
 
 
