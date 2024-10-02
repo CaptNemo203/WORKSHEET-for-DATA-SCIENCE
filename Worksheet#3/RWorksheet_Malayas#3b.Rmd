@@ -82,9 +82,7 @@ female_siblings
 ```
 
 2. Write a R program to create an empty data frame. Using the following codes:
-df = data.frame(Ints=integer(),
-
-Doubles=double(), Characters=character(),
+df = data.frame(Ints=integer(),Doubles=double(), Characters=character(),
 Logicals=logical(),
 Factors=factor(),
 stringsAsFactors=FALSE)
@@ -92,9 +90,11 @@ stringsAsFactors=FALSE)
 print("Structure of the empty dataframe:")
 print(str(df))
 a. Describe the results.
+- The output shows a data frame with no rows and five columns, where each column has a defined data type.
 
 ```{r}
 df <- data.frame(
+  Ints=integer(),
   Doubles = double(), 
   Characters = character(),
   Logicals = logical(),
@@ -108,20 +108,63 @@ print(str(df))
 ```
 a. Import the csv file into the R environment. Write the codes.
 ```{r}
-library
+household <- read.csv("HouseholdData.csv")
+household
+
 ```
 
 
 b. Convert the Sex into factor using factor() function and change it into integer.[Legend:
 Male = 1 and Female = 2]. Write the R codes and its output.
 
+```{r}
+household$Sex <- factor(household$Sex, levels = c("Male","Female"), labels = c(1,2))
+
+household$Sex <-as.integer(household$Sex)
+
+household
+
+```
+
 c. Convert the Type of Houses into factor and change it into integer. [Legend: Wood
 = 1; Congrete = 2; Semi-Congrete = 3]. Write the R codes and its output.
 
+```{r}
+household$Types.of.Houses <- factor(household$Types.of.Houses, levels = c("Wood", "Congrete", "Semi-Congrete"), labels = c(1,2,3))
+
+household$Types.of.Houses <- as.integer(household$Types.of.Houses)
+
+household
+
+```
 
 
+d. On father’s occupation, factor it as Farmer = 1; Driver = 2; and Others = 3. What
+is the R code and its output?
+```{r}
+household$Fathers.Occupation <- factor(household$Fathers.Occupation, levels = c(1, 2, 3), labels = c("Farmer", "Driver", "Others"))
+
+```
+
+e. Select only all females respondent that has a father whose occupation is driver. Write
+the codes and its output.
+```{r}
+FemaleFatherDRIVER <- household[household$Sex == 2 & household$Fathers_Occupation == 2,]
+FemaleFatherDRIVER
+```
 
 
+f. Select the respondents that have greater than or equal to 5 number of siblings attending
+school. Write the codes and its output.
+```{r}
+FMhousehold <- household[household$Siblings_at_School >= 5,]
+
+FMhousehold
+```
+
+
+4. Interpret the graph.
+The graph displays the daily count of tweets categorized by sentiment (negative, neutral, and positive) between July 14 and July 21, 2020. In general, it indicates that negative sentiment was more prevalent than neutral and positive sentiments during this time frame.
 
 
 
