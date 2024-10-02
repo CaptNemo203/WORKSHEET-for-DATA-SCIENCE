@@ -31,25 +31,57 @@ b. Describe the data. Get the structure or the summary of the data
 ```{r}
 
 str(data)
-
 summary(data)
+data
 
 ```
 
 
 c. Is the mean number of siblings attending is 5?
+```{r}
+meanSiblings <- mean(data$Siblings_at_School)
+meanSiblings
+```
+
 
 d. Extract the 1st two rows and then all the columns using the subsetting functions.
 Write the codes and its output.
+```{r}
+subsetdata <- subset(data,Respondents <=2)
+subsetdata
+```
+
 
 
 e. Extract 3rd and 5th row with 2nd and 4th column. Write the codes and its result.
+```{r}
+subrows <- data[c(3,5),c(2,4)]
+subrows
+```
 
 f. Select the variable types of houses then store the vector that results as types_houses.
 Write the codes.
+```{r}
+types_houses <- data$Types_of_Houses
+types_houses
+```
 
-g. Select only all Males respondent that their father occupation was farmer. Write the
-codes and its output.
+g. Select only all Males respondent that their father occupation was farmer. Write the codes and its output.
+```{r}
+males_farmers <- data[data$Sex == 1 & data$Fathers_Occupaton,]
+males_farmers
+```
 
-h. Select only all females respondent that have greater than or equal to 5 number of
-siblings attending school. Write the codes and its outputs.
+
+h. Select only all females respondent that have greater than or equal to 5 number of siblings attending school. Write the codes and its outputs.
+
+
+
+
+
+
+
+
+
+
+
