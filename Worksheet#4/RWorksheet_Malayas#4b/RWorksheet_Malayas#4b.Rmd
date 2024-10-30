@@ -1,0 +1,55 @@
+---
+title: "RWorksheet_Malayas#4b.Rmd"
+author: "Andrew Miguel M. Malayas BSIT2A"
+date: "2024-10-30"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+for() loop
+1. Using the for loop, create an R script that will display a 5x5 matrix as shown in
+Figure 1. It must contain vectorA = [1,2,3,4,5] and a 5 x 5 zero matrix.
+Hint Use abs() function to get the absolute value
+
+```{r}
+vectorA <- c(1, 2, 3, 4, 5)
+matrixT <- matrix(0, nrow = 5, ncol = 5)
+for (i in 1:5) {
+  matrixT[i, i] <- vectorA[i]
+}
+matrixT
+```
+
+2. Print the string "*" using for() function.
+```{r}
+n <- 5
+for (i in 1:n) {
+  for (j in 1:i) {
+    cat(" *  ")
+  }
+  cat("\n")
+}
+
+```
+3. Get an input from the user to print the Fibonacci sequence starting from the 1st input up to 500. Use repeat and break statements. Write the R Scripts and its output.
+```{r}
+start <- as.integer(readline(prompt = "Enter the starting number: "))
+start <- 1
+a <- start
+b <- 1
+cat(a, b, sep = " ")
+
+repeat {
+  nxt <- a + b
+  if (!is.na(nxt) && nxt > 500) {
+    break
+  }
+ cat(nxt, " ")
+  a <- b
+  b <- nxt
+  }
+cat("\n")
+```
