@@ -120,6 +120,95 @@ pie(expenses,
 
 
 
+6. Use the iris dataset.
+a. Check for the structure of the dataset using the str() function. Describe what you
+have seen in the output.
+```{r}
+data(iris)
+str(iris)
+```
+
+
+b. Create an R object that will contain the mean of the sepal.length, sepal.width,petal.length,and petal.width. What is the R script and its result?
+```{r}
+colMeans(iris[, 1:4])
+```
+
+
+c. Create a pie chart for the Species distribution. Add title, legends, and colors. Write
+the R script and its result.
+```{r}
+species_counts <- table(iris$Species)
+pie(species_counts, 
+    main = "Species Distribution in Iris Dataset", 
+    col = c("red", "yellow", "blue"),
+    labels = paste(names(species_counts), "\n", species_counts))
+legend("topright", 
+       legend = names(species_counts), 
+       fill = c("red", "yellow", "blue"))
+
+```
+
+
+d. Subset the species into setosa, versicolor, and virginica. Write the R scripts and show the last six (6) rows of each species.
+```{r}
+setosa <- subset(iris, Species == "setosa")
+versicolor <- subset(iris, Species == "versicolor")
+virginica <- subset(iris, Species == "virginica")
+tail(setosa)
+tail(versicolor)
+tail(virginica)
+```
+
+
+e. Create a scatterplot of the sepal.length and sepal.width using the different
+species(setosa,versicolor,virginica). Add a title = “Iris Dataset”, subtitle = “Sepal
+width and length, labels for the x and y axis, the pch symbol and colors should be based on
+the species.
+```{r}
+colors <- c("setosa" = "red", "versicolor" = "yellow", "virginica" = "blue")
+symbols <- c("setosa" = 15, "versicolor" = 17, "virginica" = 19)
+plot(iris$Sepal.Length, iris$Sepal.Width, 
+     col = colors[iris$Species], 
+     pch = symbols[iris$Species],
+     main = "Iris Dataset", 
+     sub = "Sepal Width and Length",
+     xlab = "Sepal Length", 
+     ylab = "Sepal Width")
+legend("topright", legend = c("Setosa", "Versicolor", "Virginica"), 
+       col = c("red", "yellow", "blue"), 
+       pch = c(15, 17, 19))
+
+```
+
+
+f. Overall Interpretation
+
+The scatterplot displays clear groupings for each Iris species based on sepal dimensions:
+
+- Setosa (red squares) features shorter, broader sepals, setting it apart from other species.
+- Versicolor (yellow triangles) occupies a middle range with moderate sepal length and width.
+- Virginica (blue circles) generally has longer, narrower sepals, with some overlap with versicolor.
+
+This visualization highlights species distinctions, with setosa standing out the most and a slight inverse trend between sepal length and width, particularly in virginica.
+
+
+
+
+7. Import the alexa-file.xlsx. Check on the variations. Notice that there are extra whitespaces among black variants (Black Dot, Black Plus, Black Show, Black Spot). Also on the white variants (White Dot, White Plus, White Show, White Spot).
+```{r}
+library(readxl)
+
+alexa_data <- read_excel("alexa_file.xlsx")
+
+str(alexa_data)
+```
+
+
+
+
+
+
 
 
 
