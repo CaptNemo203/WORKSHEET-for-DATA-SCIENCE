@@ -204,6 +204,98 @@ alexa_data <- read_excel("alexa_file.xlsx")
 str(alexa_data)
 ```
 
+a. Rename the white and black variants by using gsub() function.
+```{r}
+alexa_data$variation <- gsub("Black  Dot", "BlackDot", alexa_data$variation)
+alexa_data$variation <- gsub("Black  Plus", "BlackPlus", alexa_data$variation)
+alexa_data$variation <- gsub("Black  Show", "BlackShow", alexa_data$variation)
+alexa_data$variation <- gsub("Black  Spot", "BlackSpot", alexa_data$variation)
+
+# Fix "White" variants
+alexa_data$variation <- gsub("White  Dot", "WhiteDot", alexa_data$variation)
+alexa_data$variation <- gsub("White  Plus", "WhitePlus", alexa_data$variation)
+alexa_data$variation <- gsub("White  Show", "WhiteShow", alexa_data$variation)
+alexa_data$variation <- gsub("White  Spot", "WhiteSpot", alexa_data$variation)
+
+alexa_data$variation[1052:2000]
+```
+Write the R scripts and show an example of the output by getting a snippet. To embed an image into Rmd, use the function below:
+
+```{r}
+library(knitr)
+
+values <- c(10, 5, 14)
+names <- c(4, 6, 8)
+colors <- c("red", "green", "blue")
+
+barplot(values, names.arg=names, col=colors, main="Change bar width", width=c(1, 0.5, 1.5))
+
+barplot(values, names.arg=names, col=colors, main="Change space between bars", space=c(0.2, 1, 0.5))
+
+```
+b. Get the total number of each variations and save it into another object. Save the
+object as variations.RData. Write the R scripts. What is its result?
+Hint: Use the dplyr package. Make sure to install it before loading the package.
+```{r}
+library(dplyr)
+
+
+variation_counts <- alexa_data %>%
+  count(variation)
+
+save(variation_counts, file = "variations.RData")
+
+print(variation_counts)
+```
+c. From the variations.RData, create a barplot(). Complete the details of the chart
+which include the title, color, labels of each bar.
+```{r}
+barplot(
+  variation_counts$n,                            
+  names.arg = variation_counts$variation,        
+  col = rainbow(length(variation_counts$variation)),  
+  main = "Product Variants and Totals",             
+  xlab = "Variation",                            
+  ylab = "Total",
+   las = 2,
+   cex.names = 0.8
+)
+```
+d. Create a barplot() for the black and white variations. Plot it in 1 frame, side by side. Complete the details of the chart.
+```{r}
+library(dplyr)
+
+variation_counts <- alexa_data %>%
+  filter(grepl("Black|White", variation)) %>% # Filter for Black and White variations
+  count(variation)
+
+black_counts <- variation_counts %>%
+  filter(grepl("Black", variation))
+white_counts <- variation_counts %>%
+  filter(grepl("White", variation))
+
+par(mfrow = c(1, 2))
+
+variations <- variation_counts$variation
+counts <- variation_counts$n
+
+barplot(black_counts$n,
+        names.arg = black_counts$variation,
+        col = c("red", "blue", "yellow", "green", "black"),
+        main = "Black Variants",
+        xlab = "Total Numbers",
+        ylab = "Variants",
+        ylim = c(0, max(black_counts$n) * 1.2))
+
+barplot(white_counts$n,
+        names.arg = white_counts$variation,
+        col = c("red", "blue", "yellow", "green", "black"),
+        main = "White Variants",
+        xlab = "Total Numbers",
+        ylab = "Variants",
+        ylim = c(0, max(white_counts$n) * 1.2))
+
+```
 
 
 
